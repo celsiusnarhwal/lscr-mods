@@ -21,8 +21,9 @@ def apply(app: str):
     config = xmltodict.parse(config_file.read_text())
 
     for setting, value in config["Config"].items():
-        print(os.environ)
+        print(setting)
         env_name = f"{app.upper()}_{setting.upper()}"
+        print(env_name)
 
         if env_value := os.getenv(env_name):
             config["Config"][setting] = env_value
