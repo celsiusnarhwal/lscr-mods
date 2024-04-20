@@ -31,7 +31,7 @@ def apply(app: str):
     config_file.open("w").writelines(new_xml)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     application = get_app()
     print(f"Applying {application.capitalize()} settings from environment variables...")
     apply(application)
