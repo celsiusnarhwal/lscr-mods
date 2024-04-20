@@ -1,4 +1,4 @@
-#!/usr/bin/with-contenv python
+#!/usr/bin/env python
 
 import os
 from pathlib import Path
