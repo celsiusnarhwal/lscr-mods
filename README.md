@@ -41,8 +41,8 @@ of the setting in all caps.
 For example, to set Sonarr's `Port` setting to `6868`:
 
 ```yaml
-sonarr:  # or radarr, lidarr, etc.
-    image: lscr.io/linuxserver/sonarr:latest  # or lscr.io/linuxserver/radarr:latest, lscr.io/linuxserver/lidarr:latest, etc.
+sonarr:
+    image: lscr.io/linuxserver/sonarr:latest
     environment:
       - DOCKER_MODS=celsiusnarhwal/lscr-mods:universal-envarr
       - SONARR_PORT=6868
