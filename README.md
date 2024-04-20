@@ -12,10 +12,6 @@ the app's web UI.
 
 Set the container's `DOCKER_MODS` environment variable to `celsiusnarhwal/lscr-mods:universal-envarr`.
 
-> [!WARNING]
-> Despite `universal` being in the tag, this mod only works with the Sonarr, Radarr, Lidarr, Readarr, and Prowlarr
-images.
-
 ```yaml
 sonarr:  # or radarr, lidarr, etc.
     image: lscr.io/linuxserver/sonarr:latest  # or lscr.io/linuxserver/radarr:latest, lscr.io/linuxserver/lidarr:latest, etc.
@@ -31,6 +27,10 @@ sonarr:  # or radarr, lidarr, etc.
     environment:
       - DOCKER_MODS=celsiusnarhwal/lscr-mods:universal-envarr|linuxserver/mods:universal-cloudflared
 ```
+
+> [!NOTE]
+> Despite `universal` being in the tag, this mod only works with the Sonarr, Radarr, Lidarr, Readarr, and Prowlarr
+images.
 
 ## Usage
 
