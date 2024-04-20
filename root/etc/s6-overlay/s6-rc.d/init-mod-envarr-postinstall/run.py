@@ -16,7 +16,7 @@ def get_app():
 
 
 def apply(app: str):
-    config_file = Path("config.xml")
+    config_file = Path("/config/config.xml")
 
     config = xmltodict.parse(config_file.read_text())
 
