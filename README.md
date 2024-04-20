@@ -1,6 +1,6 @@
 # LSCR Mods
 
-This repository hosts mods I've basde for [LinuxServer.io](https://linuxserver.io)'s Docker images.
+This repository hosts mods I've made for [LinuxServer.io](https://linuxserver.io)'s Docker images.
 
 Currently, that includes:
 
