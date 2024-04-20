@@ -10,9 +10,11 @@ def get_app():
     try:
         return next((app for app in apps if Path(f"/app/{app}").exists()))
     except StopIteration:
-        raise RuntimeError(
-            f"Envarr is only compatible with LinuxServer.io's Sonarr, Radarr, Lidarr, Readarr, and Prowlarr images."
+        print(
+            f"Envarr is only compatible with LinuxServer.io's Sonarr, Radarr, Lidarr, Readarr, and Prowlarr images, "
+            f"so it will have no effect here."
         )
+        exit(0)
 
 
 def apply(app: str):
