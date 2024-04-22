@@ -3,7 +3,7 @@ from pathlib import Path
 
 import xmltodict
 
-CONFIG_FILE_PATH = Path("/config/config.xml")
+CONFIG_FILE = Path("/config/config.xml")
 
 
 def msg(m: str):
@@ -26,20 +26,24 @@ def get_app():
 
 
 def check_config_file():
-    if not CONFIG_FILE_PATH.exists():
-        raise FileNotFoundError(msg(f"{CONFIG_FILE_PATH} does not exist."))
+    if not CONFIG_FILE.exists():
+        raise FileNotFoundError(msg(f"{CONFIG_FILE} does not exist."))
 
-    if not CONFIG_FILE_PATH.is_file():
-        raise IsADirectoryError(msg(f"{CONFIG_FILE_PATH} is a directory."))
+    if not CONFIG_FILE.is_file():
+        raise IsADirectoryError(msg(f"{CONFIG_FILE} is a directory."))
 
-    if not os.access(CONFIG_FILE_PATH, os.W_OK):
-        raise PermissionError(msg(f"{CONFIG_FILE_PATH} is not writable."))
+    if not os.access(CONFIG_FILE, os.W_OK):
+        raise PermissionError(msg(f"{CONFIG_FILE} is not writable."))
 
 
 def apply(app: str):
-    config_file = Path("/config/config.xml")
+    print(
+        msg(
+            f"Applying {application.capitalize()} settings from environment variables..."
+        )
+    )
 
-    config = xmltodict.parse(config_file.read_text())
+    config = xmltodict.parse(CONFIG_FILE.read_text())
 
     for setting, value in config["Config"].items():
         env_name = f"{app.upper()}_{setting.upper()}"
@@ -49,16 +53,12 @@ def apply(app: str):
             print(msg(f'From ENV {env_name}: {setting}="{env_value}"'))
 
     new_xml = xmltodict.unparse(config, pretty=True).splitlines(keepends=True)[1:]
-    config_file.open("w").writelines(new_xml)
+    CONFIG_FILE.open("w").writelines(new_xml)
 
     print(msg("Settings applied successfully."))
 
 
 if __name__ == "__main__":
     application = get_app()
-    print(
-        msg(
-            f"Applying {application.capitalize()} settings from environment variables..."
-        )
-    )
+    check_config_file()
     apply(application)
